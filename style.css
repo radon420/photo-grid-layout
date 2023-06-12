@@ -1,0 +1,366 @@
+/* ========================
+Tags & Shared Parameters
+======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Dosis", sans-serif;
+  font-size: 16px;
+  height: 100vh;
+  /* overflow-y: hidden; */
+}
+
+h1 {
+  color: #71d99e;
+  padding-left: 20px;
+}
+a {
+  color: #71d99e;
+}
+h5 {
+  padding: 10px 10px;
+  font-size: 1.2rem;
+  color: #1e4040;
+}
+h2 {
+  color: #1e4040;
+  padding: 10px 20px;
+}
+h4 {
+  font-size: 0.7rem;
+}
+p {
+  padding: 10px 10px;
+  line-height: 25px;
+}
+img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 2px 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================
+    Body Page Layout
+======================== */
+
+body {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 70px 1fr;
+  grid-template-areas:
+    "topnavbar topnavbar"
+    "contentpage contentpage";
+}
+.navbarexpanded {
+  grid-template-areas:
+    "topnavbar topnavbar"
+    "sidenavbar contentpage";
+}
+
+/* ========================
+    Top Nav Bar Layout &
+      Buttons
+======================== */
+#topnavbar {
+  background-color: #1e4040;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  grid-area: topnavbar;
+}
+#topnavbuttoncontainer {
+  justify-content: space-between;
+  height: 70px;
+  display: flex;
+  padding: 0px 10px;
+}
+#righttopbar {
+  display: flex;
+  align-self: center;
+}
+#lefttopbar {
+  display: flex;
+  align-self: center;
+}
+.expandnavbar,
+#videobutton,
+#articlebutton,
+.topbarbuttons {
+  color: #71d99e;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.topbarbuttons {
+  text-decoration: underline;
+}
+#videobutton,
+#articlebutton {
+  margin: 0 5px;
+}
+.expandnavbar:hover,
+.topbarbuttons:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.sidenavbar {
+  display: flex;
+  flex-direction: column;
+  grid-area: sidenavbar;
+  justify-self: center;
+  padding-top: 20px;
+}
+.hide {
+  display: none;
+}
+
+/* ========================
+    Content Area Layout
+======================== */
+#contentpage {
+  overflow-y: scroll;
+  grid-area: contentpage;
+  display: grid;
+  grid-template-rows: 1fr auto 70px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "description" "secondarysidebar" "footer";
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+#description {
+  grid-area: description;
+}
+
+#secondarysidebar {
+  grid-area: secondarysidebar;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+#footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  grid-area: footer;
+  align-items: end;
+  background-color: #1e4040;
+}
+
+/* ========================
+    Side Nav Bar Layout &
+      Buttons
+======================== */
+
+.fa-house,
+.fa-dollar-sign,
+h4 {
+  color: #1e4040;
+  background-color: transparent;
+}
+
+.fa-user {
+  color: white;
+  background-color: transparent;
+}
+.background {
+  border-radius: 50%;
+  margin-left: 9px;
+  /* to make background circle */
+  width: 13px;
+  height: 13px;
+  background-color: #1e4040;
+  border: 1px solid #1e4040;
+}
+#billingbutton,
+#profilebutton,
+#homebutton {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding-top: 20%;
+}
+.sidebarbuttons:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+/* ========================
+    Image Area Layout
+======================== */
+
+#photogrid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 40px 1fr 40px 1fr;
+  justify-items: center;
+  align-items: center;
+  margin: 0px 40px;
+}
+#photogrid * {
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+#ChacoCulture {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  z-index: 2;
+  align-self: center;
+}
+
+#BalloonsTurkey {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  z-index: 1;
+  transform: rotate(-10deg);
+}
+#CliffsEtretat {
+  grid-column-start: 4;
+  grid-column-end: 6;
+  z-index: 1;
+  transform: rotate(10deg);
+}
+#secondarysidebar {
+  max-width: 290px;
+}
+#secondarysidebar img {
+  max-width: 290px;
+  justify-self: flex-start;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+/* ========================
+      BREAKPOINTS
+======================== */
+
+@media (min-width: 576px) {
+  .expandnavbar {
+    display: none !important;
+  }
+  .hide {
+    display: block;
+  }
+  body {
+    grid-template-areas:
+      "topnavbar topnavbar"
+      "sidenavbar contentpage";
+  }
+  #topnavbuttoncontainer {
+    justify-content: space-between;
+    padding-right: 50px;
+  }
+  .sidenavbar {
+    grid-area: sidenavbar;
+  }
+  #contentpage {
+    grid-area: contentpage;
+    grid-template-rows: 1fr auto 70px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "description"
+      "secondarysidebar"
+      "footer";
+  }
+
+  #description {
+    grid-area: description;
+  }
+
+  #secondarysidebar {
+    grid-area: secondarysidebar;
+    max-width: 600px;
+  }
+  #secondarysidebar img {
+    max-width: 600px;
+  }
+
+  #footer {
+    grid-area: footer;
+  }
+}
+@media (min-width: 992px) {
+  .expandnavbar {
+    display: none !important;
+  }
+  .hide {
+    display: block;
+  }
+  h1 {
+    padding-left: 0;
+  }
+
+  #topnavbuttoncontainer {
+    max-width: 1000px;
+    justify-content: space-between;
+  }
+  #videobutton {
+    grid-area: videobutton;
+  }
+  #articlebutton {
+    grid-area: articlebutton;
+  }
+  #videobutton,
+  #articlebutton {
+    justify-self: left;
+  }
+
+  #sidenavbar {
+    grid-area: sidenavbar;
+  }
+
+  #contentpage {
+    grid-area: contentpage;
+    grid-template-rows: 1fr 70px;
+    grid-template-columns: minmax(auto, 600px) 1fr;
+    grid-template-areas:
+      "description secondarysidebar"
+      "footer footer";
+  }
+
+  #description {
+    grid-area: description;
+  }
+
+  #secondarysidebar {
+    padding: 0 40px;
+    max-width: 500px;
+    grid-area: secondarysidebar;
+    justify-self: right;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  #secondarysidebar img {
+    max-width: 500px;
+  }
+
+  #footer {
+    grid-area: footer;
+  }
+}
+@media (min-width: 1440px) {
+  body {
+    grid-template-columns: 200px 1fr;
+  }
+  h1 {
+    padding-left: 0;
+  }
+  #topnavbuttoncontainer {
+    max-width: 1100px;
+    padding-left: 200px;
+    justify-content: space-between;
+  }
+  .sidenavbar {
+    justify-self: right;
+    padding-right: 20px;
+  }
+  #description {
+    max-width: 720px;
+  }
+  #secondarysidebar {
+    justify-self: left;
+    align-content: center;
+    max-width: 500px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+  }
+}
